@@ -4,14 +4,14 @@
 using System.Data.SqlClient; // Me permite tener acceso a los objetos: SqlConnection, SqlCommand, SqlDataReader, SqlDataAdapter
 using System.Data; // Me permite tener acceso a los tipos de variables de la base de datos, entre otros.
 
-namespace ProyectoFinal
+namespace Proyecto.ADO.NET
 {
 
     public static class ProductoHandler // Clase encargada de proporcionar los métodos necesarios para manipular los objetos de la clase "Producto"
     {
 
         // String que me permite conectarme a mi Base de Datos (BD)
-        public const string connectionString = "Server=DESKTOP-2QV2INM;Database=SistemaGestion;Trusted_Connection=True"; 
+        public const string connectionString = "Server=DESKTOP-BFEDFK8;Database=ManipulaciondeDatos;Trusted_Connection=True"; 
 
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -41,7 +41,7 @@ namespace ProyectoFinal
             
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                const string querySelect = "SELECT * FROM [SistemaGestion].[dbo].[Producto]"; // Query que selecciona todas las columnas de la tabla Producto.
+                const string querySelect = "SELECT * FROM [ManipulaciondeDatos].[dbo].[Producto]"; // Query que selecciona todas las columnas de la tabla Producto.
 
                 using (SqlCommand sqlCommand = new SqlCommand(querySelect, sqlConnection)) // Creo un objeto SqlCommand que va a ejecutar "querySelect" en la BD a la que se accede con "connectionString". // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
                 {
@@ -82,7 +82,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                const string querySelect = "SELECT * FROM [SistemaGestion].[dbo].[Producto] WHERE IdUsuario = @idUsuario"; // Query que selecciona todas las columnas de la tabla Producto de las filas con IdUsuario = idUsuario.
+                const string querySelect = "SELECT * FROM [ManipulaciondeDatos].[dbo].[Producto] WHERE IdUsuario = @idUsuario"; // Query que selecciona todas las columnas de la tabla Producto de las filas con IdUsuario = idUsuario.
 
                 using (SqlCommand sqlCommand = new SqlCommand(querySelect, sqlConnection)) // Creo un objeto SqlCommand que va a ejecutar "querySelect" en la BD a la que se accede con "connectionString". // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
                 {
@@ -127,7 +127,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                const string querySelect = "SELECT * FROM [SistemaGestion].[dbo].[Producto] WHERE Id = @id"; // Query que selecciona todas las columnas de la tabla Producto de las filas con Id = id.
+                const string querySelect = "SELECT * FROM [ManipulaciondeDatos].[dbo].[Producto] WHERE Id = @id"; // Query que selecciona todas las columnas de la tabla Producto de las filas con Id = id.
 
                 using (SqlCommand sqlCommand = new SqlCommand(querySelect, sqlConnection)) // Creo un objeto SqlCommand que va a ejecutar "querySelect" en la BD a la que se accede con "connectionString". // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
                 {
@@ -170,7 +170,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                string queryUpdate = "UPDATE [SistemaGestion].[dbo].[Producto] " + // Query que me permite actualizar la columna el Stock de la tabla Producto.
+                string queryUpdate = "UPDATE [ManipulaciondeDatos].[dbo].[Producto] " + // Query que me permite actualizar la columna el Stock de la tabla Producto.
                                         "SET Stock = @stock " +
                                         "WHERE Id = @id";
 
@@ -209,7 +209,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                string queryInsert = "INSERT INTO [SistemaGestion].[dbo].[Producto] (Descripciones, Costo, PrecioVenta, Stock, IdUsuario) " + // Query que me permite agregar un producto a la BD.
+                string queryInsert = "INSERT INTO [ManipulaciondeDatos].[dbo].[Producto] (Descripciones, Costo, PrecioVenta, Stock, IdUsuario) " + // Query que me permite agregar un producto a la BD.
                                         "VALUES (@descripciones, @costo, @precioVenta, @stock, @idUsuario) " +
                                         "SELECT @@IDENTITY";
 
@@ -268,7 +268,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {                
-                string queryUpdate =    "UPDATE [SistemaGestion].[dbo].[Producto] " + // Query que me permite actualizar todas las columnas de la tabla Producto.
+                string queryUpdate = "UPDATE [ManipulaciondeDatos].[dbo].[Producto] " + // Query que me permite actualizar todas las columnas de la tabla Producto.
                                         "SET Descripciones = @descripciones, " +
                                         "Costo = @costo, " +
                                         "PrecioVenta = @precioVenta, " +
@@ -335,7 +335,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                string queryDelete =    "DELETE FROM [SistemaGestion].[dbo].[Producto] " + // Query que me permite eliminar la fila de la tabla Producto cuyo Id sea igual a id.
+                string queryDelete = "DELETE FROM [ManipulaciondeDatos].[dbo].[Producto] " + // Query que me permite eliminar la fila de la tabla Producto cuyo Id sea igual a id.
                                         "WHERE Id = @id";
 
                 var parameterId = new SqlParameter("id", SqlDbType.BigInt); // Creo un nuevo objeto SqlParameter, para especificar "@id", declarado en queryDelete. Defino el nombre del parámetro (que debe coincidir con el nombre utilizado en la query) y defino el tipo de dato de la columna del parámetro.
@@ -374,7 +374,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // Creo un objeto de tipo SqlConnection con el connectionString que me permite acceder a mi BD. // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
             {
-                const string queryGet = "SELECT * FROM [SistemaGestion].[dbo].[Producto] WHERE Id = @id"; // Query que me permite seleccionar todas las columnas de la tabla Prodcuto de la fila cuyo Id = id
+                const string queryGet = "SELECT * FROM [ManipulaciondeDatos].[dbo].[Producto] WHERE Id = @id"; // Query que me permite seleccionar todas las columnas de la tabla Prodcuto de la fila cuyo Id = id
 
                 using (SqlCommand sqlCommand = new SqlCommand(queryGet, sqlConnection)) // Creo un objeto SqlCommand que va a ejecutar "queryGet" en la BD a la que se accede con "connectionString". // El "using" permite liberar los recursos declarados "(...)" para que no permanezcan en memoria más de lo necesario.
                 {

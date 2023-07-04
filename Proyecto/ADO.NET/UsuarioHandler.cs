@@ -5,13 +5,13 @@ using System.Data.SqlClient; // Para tener acceso a los objetos: SqlConnection, 
 using System.Data;
 using System;
 
-namespace ProyectoFinal
+namespace Proyecto.ADO.NET
 {
     
     public static class UsuarioHandler// Clase encargada de proporcionar los métodos necesarios para manipular los objetos de la clase "Usuario".
     {
         
-        public const string connectionString = "Server=DESKTOP-2QV2INM;Database=SistemaGestion;Trusted_Connection=True";
+        public const string connectionString = "Server=DESKTOP-BFEDFK8;Database=ManipulaciondeDatos;Trusted_Connection=True";
 
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -30,7 +30,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [SistemaGestion].[dbo].[Usuario] WHERE NombreUsuario = @nombreUsuario", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [ManipulaciondeDatos].[dbo].[Usuario] WHERE NombreUsuario = @nombreUsuario", sqlConnection))
                 {
                     var sqlParameter = new SqlParameter();
                     sqlParameter.ParameterName = "nombreUsuario";
@@ -75,7 +75,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [SistemaGestion].[dbo].[Usuario] WHERE (NombreUsuario = @nombreUsuario AND Contraseña = @contraseña)", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [ManipulaciondeDatos].[dbo].[Usuario] WHERE (NombreUsuario = @nombreUsuario AND Contraseña = @contraseña)", sqlConnection))
                 {
                     var sqlParameter1 = new SqlParameter();
                     sqlParameter1.ParameterName = "nombreUsuario";
@@ -194,7 +194,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [SistemaGestion].[dbo].[Usuario]", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [ManipulaciondeDatos].[dbo].[Usuario]", sqlConnection))
                 {
                     sqlConnection.Open();
 
@@ -253,7 +253,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryInsert = "INSERT INTO [SistemaGestion].[dbo].[Usuario] (Nombre, Apellido, NombreUsuario, Contraseña, Mail) " + // Query que me permite crear un Usuario.
+                string queryInsert = "INSERT INTO [ManipulaciondeDatos].[dbo].[Usuario] (Nombre, Apellido, NombreUsuario, Contraseña, Mail) " + // Query que me permite crear un Usuario.
                                         "VALUES (@nombre, @apellido, @nombreUsuario, @contraseña, @mail) ";
 
                 var parameterNombre = new SqlParameter("nombre", SqlDbType.VarChar);
@@ -309,7 +309,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryDelete = "DELETE FROM [SistemaGestion].[dbo].[Usuario] " + // Query que me permite eliminar una fila de la tabla Usuario.
+                string queryDelete = "DELETE FROM [ManipulaciondeDatos].[dbo].[Usuario] " + // Query que me permite eliminar una fila de la tabla Usuario.
                                         "WHERE Id = @id";
 
                 var parameterId = new SqlParameter("id", SqlDbType.BigInt);
@@ -348,7 +348,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [SistemaGestion].[dbo].[Usuario] WHERE Id = @id", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [ManipulaciondeDatos].[dbo].[Usuario] WHERE Id = @id", sqlConnection))
                 {
                     var sqlParameter = new SqlParameter();
                     sqlParameter.ParameterName = "id";

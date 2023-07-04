@@ -4,13 +4,13 @@
 using System.Data.SqlClient; // Para tener acceso a los objetos: SqlConnection, SqlCommand, SqlDataReader, SqlDataAdapter
 using System.Data;
 
-namespace ProyectoFinal
+namespace Proyecto.ADO.NET
 {
 
     public static class VentaHandler// Clase encargada de proporcionar los métodos necesarios para manipular los objetos de la clase "Venta"
     {
 
-        public const string connectionString = "Server=DESKTOP-2QV2INM;Database=SistemaGestion;Trusted_Connection=True";
+        public const string connectionString = "Server=DESKTOP-BFEDFK8;Database=ManipulaciondeDatos;Trusted_Connection=True";
 
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -72,7 +72,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryInsert = "INSERT INTO [SistemaGestion].[dbo].[Venta] (Comentarios) " + // Query que me permite agregar una Venta.
+                string queryInsert = "INSERT INTO [ManipulaciondeDatos].[dbo].[Venta] (Comentarios) " + // Query que me permite agregar una Venta.
                                         "VALUES (@comentarios) " +
                                         "SELECT @@IDENTITY";
 
@@ -144,7 +144,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryDelete = "DELETE FROM [SistemaGestion].[dbo].[Venta] WHERE Id = @id";
+                string queryDelete = "DELETE FROM [ManipulaciondeDatos].[dbo].[Venta] WHERE Id = @id";
 
                 var parameterId = new SqlParameter("id", SqlDbType.BigInt);
                 parameterId.Value = id;

@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace proyectoFinal_cSharp.Controllers
+namespace proyecto_cSharp.Controllers
 {
     [ApiController]
     [Route("[controller]")]

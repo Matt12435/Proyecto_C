@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProyectoFinal.Controllers.DTOS;
+using Proyecto.Controllers.DTOS;
 
-namespace ProyectoFinal.Controllers
+namespace Proyecto.Controllers
 {
     [ApiController]
     [Route("[controller]")]

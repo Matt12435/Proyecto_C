@@ -4,13 +4,13 @@
 using System.Data.SqlClient; // Para tener acceso a los objetos: SqlConnection, SqlCommand, SqlDataReader, SqlDataAdapter
 using System.Data;
 
-namespace ProyectoFinal
+namespace Proyecto.ADO.NET
 {
     
     public static class ProductoVendidoHandler// Clase encargada de proporcionar los métodos necesarios para manipular los objetos de la clase "ProductoVendido".
     {
 
-        public const string connectionString = "Server=DESKTOP-2QV2INM;Database=SistemaGestion;Trusted_Connection=True";
+        public const string connectionString = "Server=DESKTOP-BFEDFK8;Database=ManipulaciondeDatos;Trusted_Connection=True";
 
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -31,7 +31,7 @@ namespace ProyectoFinal
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 const string query = "SELECT pv.Id, pv.Stock, pv.IdProducto, pv.IdVenta " +     // Query que devuelve las columnas: 
-                                        "FROM[SistemaGestion].[dbo].[ProductoVendido] AS pv " + //      Id, Descripciones, Costo, PrecioVenta, Stock y IdUsuario de la tabla Producto.           
+                                        "FROM[ManipulaciondeDatos].[dbo].[ProductoVendido] AS pv " + //      Id, Descripciones, Costo, PrecioVenta, Stock y IdUsuario de la tabla Producto.           
                                         "INNER JOIN Producto p ON p.Id = pv.IdProducto " +      // De la intersección de Producto.Id y ProductoVendido.IdProducto 
                                         "WHERE p.IdUsuario = @idUsuario";                       // Para los elementos de Producto que tienen IdUsuario = idUsuario
 
@@ -79,7 +79,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                const string query =    "SELECT * FROM[SistemaGestion].[dbo].[ProductoVendido] " +     // Query que devuelve todas las columnas de la tabla ProductoVendido de las filas de  que tienen IdVenta = idVenta.
+                const string query = "SELECT * FROM[ManipulaciondeDatos].[dbo].[ProductoVendido] " +     // Query que devuelve todas las columnas de la tabla ProductoVendido de las filas de  que tienen IdVenta = idVenta.
                                         "WHERE IdVenta = @idVenta";
 
                 using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
@@ -129,7 +129,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryInsert = "INSERT INTO [SistemaGestion].[dbo].[ProductoVendido] (IdProducto, Stock, IdVenta) " + // Query que me permite agregar un ProductoVendido.
+                string queryInsert = "INSERT INTO [ManipulaciondeDatos].[dbo].[ProductoVendido] (IdProducto, Stock, IdVenta) " + // Query que me permite agregar un ProductoVendido.
                                         "VALUES (@idProducto, @stock, @idventa) " +
                                         "SELECT @@IDENTITY";
 
@@ -180,7 +180,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryUpdate = "DELETE FROM [SistemaGestion].[dbo].[ProductoVendido] " + // Query que me permite eliminar todas las filas de la tabla ProductoVendido que cumplan con IdProducto = idProducto
+                string queryUpdate = "DELETE FROM [ManipulaciondeDatos].[dbo].[ProductoVendido] " + // Query que me permite eliminar todas las filas de la tabla ProductoVendido que cumplan con IdProducto = idProducto
                                         "WHERE IdProducto = @idProducto";
 
                 var parameterIdProducto = new SqlParameter("idProducto", SqlDbType.BigInt);
@@ -214,7 +214,7 @@ namespace ProyectoFinal
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string queryDelete = "DELETE FROM [SistemaGestion].[dbo].[ProductoVendido] " + // Query que me permite eliminar todas las filas de la tabla ProductoVendido que cumplan con IdVenta = idVenta.
+                string queryDelete = "DELETE FROM [ManipulaciondeDatos].[dbo].[ProductoVendido] " + // Query que me permite eliminar todas las filas de la tabla ProductoVendido que cumplan con IdVenta = idVenta.
                                         "WHERE IdVenta = @idventa";
 
                 var parameterIdVenta = new SqlParameter("idVenta", SqlDbType.BigInt);
